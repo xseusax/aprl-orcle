@@ -1,0 +1,67 @@
+<Inventory>
+
+  
+  <Item>
+    <Code>VVC</Code><Name>Vanilla Velvet Cupcake</Name><Brand>Sweet Delights</Brand>
+    <Category>Cupcakes</Category><Stock>50</Stock><Price>45</Price>
+  </Item>
+
+  <Item>
+    <Code>CCK</Code><Name>Chocolate Cupcake</Name><Brand>Sweet Delights</Brand>
+    <Category>Cupcakes</Category><Stock>50</Stock><Price>50</Price>
+  </Item>
+
+  <Item>
+    <Code>RVT</Code><Name>Red Velvet Cupcake</Name><Brand>Sweet Delights</Brand>
+    <Category>Cupcakes</Category><Stock>40</Stock><Price>55</Price>
+  </Item>
+
+  <Item>
+    <Code>STB</Code><Name>Strawberry Cupcake</Name><Brand>Sweet Delights</Brand>
+    <Category>Cupcakes</Category><Stock>40</Stock><Price>50</Price>
+  </Item>
+
+  
+  <Item>
+    <Code>MTG</Code><Name>Classic Milk Tea</Name><Brand>Tea House</Brand>
+    <Category>Milk Tea</Category><Stock>60</Stock><Price>55</Price>
+  </Item>
+
+  <Item>
+    <Code>OCT</Code><Name>Okinawa Milk Tea</Name><Brand>Tea House</Brand>
+    <Category>Milk Tea</Category><Stock>60</Stock><Price>60</Price>
+  </Item>
+
+  <Item>
+    <Code>CLT</Code><Name>Chocolate Milk Tea</Name><Brand>Tea House</Brand>
+    <Category>Milk Tea</Category><Stock>50</Stock><Price>60</Price>
+  </Item>
+
+  
+  <Item>
+    <Code>CBG</Code><Name>Classic Burger</Name><Brand>Burger Hub</Brand>
+    <Category>Burgers</Category><Stock>80</Stock><Price>80</Price>
+  </Item>
+
+  <Item>
+    <Code>BBG</Code><Name>Bacon Burger</Name><Brand>Burger Hub</Brand>
+    <Category>Burgers</Category><Stock>60</Stock><Price>95</Price>
+  </Item>
+
+  
+  <Item>
+    <Code>LMD</Code><Name>Lemonade</Name><Brand>Fresh Sip</Brand>
+    <Category>Drinks</Category><Stock>100</Stock><Price>40</Price>
+  </Item>
+
+  <Item>
+    <Code>MNG</Code><Name>Mango Juice</Name><Brand>Fresh Sip</Brand>
+    <Category>Drinks</Category><Stock>90</Stock><Price>45</Price>
+  </Item>
+
+  <Item>
+    <Code>ICF</Code><Name>Iced Coffee</Name><Brand>Fresh Sip</Brand>
+    <Category>Drinks</Category><Stock>78</Stock><Price>60</Price>
+  </Item>
+
+</Inventory>
