@@ -9,23 +9,23 @@ app = Flask(__name__)
 CORS(app)
 
 # =========================
-# FILES
+# FILES (RENDER SAFE)
 # =========================
-INVENTORY_FILE = "inventory.xml"
-ORDERS_FILE = "orders.xml"
-RECEIPTS_FILE = "receipts.xml"
+INVENTORY_FILE = "/tmp/inventory.xml"
+ORDERS_FILE = "/tmp/orders.xml"
+RECEIPTS_FILE = "/tmp/receipts.xml"
 
 
 # =========================
 # HELPERS
 # =========================
-def load_xml(file):
+def load_xml(file, root_name):
     if os.path.exists(file):
         try:
             return ET.parse(file).getroot()
         except:
             pass
-    return ET.Element("Root")
+    return ET.Element(root_name)
 
 
 def save_xml(file, root):
@@ -37,12 +37,12 @@ def save_xml(file, root):
 # =========================
 @app.route("/inventory", methods=["GET"])
 def inventory():
-    root = load_xml(INVENTORY_FILE)
+    root = load_xml(INVENTORY_FILE, "Inventory")
     return Response(ET.tostring(root, encoding="unicode"), mimetype="application/xml")
 
 
 def process_inventory(code, qty):
-    root = load_xml(INVENTORY_FILE)
+    root = load_xml(INVENTORY_FILE, "Inventory")
 
     for item in root.findall("Item"):
         if item.find("Code").text == code:
@@ -120,7 +120,7 @@ def place_order():
     txn = pay_res.find("TransactionID").text
 
     # STEP 3: SAVE ORDER
-    orders = load_xml(ORDERS_FILE)
+    orders = load_xml(ORDERS_FILE, "Orders")
     o = ET.SubElement(orders, "Order")
 
     ET.SubElement(o, "TransactionID").text = txn
@@ -135,7 +135,7 @@ def place_order():
     save_xml(ORDERS_FILE, orders)
 
     # STEP 4: SAVE RECEIPT
-    receipts = load_xml(RECEIPTS_FILE)
+    receipts = load_xml(RECEIPTS_FILE, "Receipts")
     r = ET.SubElement(receipts, "Receipt")
 
     ET.SubElement(r, "TransactionID").text = txn
@@ -168,7 +168,7 @@ def place_order():
 @app.route("/order_history")
 def history():
     return Response(
-        ET.tostring(load_xml(ORDERS_FILE), encoding="unicode"),
+        ET.tostring(load_xml(ORDERS_FILE, "Orders"), encoding="unicode"),
         mimetype="application/xml"
     )
 
@@ -176,7 +176,7 @@ def history():
 @app.route("/receipts")
 def receipts():
     return Response(
-        ET.tostring(load_xml(RECEIPTS_FILE), encoding="unicode"),
+        ET.tostring(load_xml(RECEIPTS_FILE, "Receipts"), encoding="unicode"),
         mimetype="application/xml"
     )
 
@@ -190,7 +190,7 @@ def home():
 
 
 # =========================
-# RUN (RENDER READY)
+# RUN (LOCAL ONLY)
 # =========================
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
